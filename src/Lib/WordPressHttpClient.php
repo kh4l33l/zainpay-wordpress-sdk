@@ -72,7 +72,7 @@ class WordPressHttpResponse implements \Psr\Http\Message\ResponseInterface
     private string $protocolVersion = '1.1';
     private int $statusCode = 200;
     private string $reasonPhrase = '';
-    private WordPressHttpStream $body;
+    private \Psr\Http\Message\StreamInterface $body;
 
     public function __construct($response)
     {
@@ -87,7 +87,7 @@ class WordPressHttpResponse implements \Psr\Http\Message\ResponseInterface
         return $this->statusCode;
     }
 
-    public function getBody(): WordPressHttpStream
+    public function getBody(): \Psr\Http\Message\StreamInterface
     {
         return $this->body;
     }

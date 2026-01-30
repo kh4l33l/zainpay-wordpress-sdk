@@ -10,6 +10,12 @@
             "homepage": "https://ibrahim.ng"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/kh4l33l/zainpay-wordpress-sdk/"
+        }
+    ],
     "require": {
         "php": ">=7.4",
         "zainpay/sdk": "dev-main"
