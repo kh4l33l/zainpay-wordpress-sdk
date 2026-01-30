@@ -67,6 +67,7 @@ class WordPressHttpClient
     }
 }
 
+
 trait WordPressRequestTrait
 {
     public function post(string $url, array $data, array $headers = []): Response
