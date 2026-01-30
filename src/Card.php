@@ -3,12 +3,16 @@
 namespace Zainpay\SDK\WordPress;
 
 use Zainpay\SDK\Card as BaseCard;
-use Zainpay\SDK\WordPress\Lib\WordPressHttpClient;
+use Zainpay\SDK\Response;
+use Zainpay\SDK\Util\FilterUtil;
+use Zainpay\SDK\WordPress\Lib\WordPressRequestTrait;
 
 class Card extends BaseCard
 {
-    protected function createClient(array $config)
+    use WordPressRequestTrait;
+
+    public function zainboxTransactionHistory(string $zainboxCode, ?string $dateFrom, ?string $dateTo, ?string $email, ?string $status, ?string $txnRef, int $count = 20): Response
     {
-        return new WordPressHttpClient($config);
+        return $this->get($this->getModeUrl() . 'zainbox/card/transactions/' . $zainboxCode, FilterUtil::CardTxnHistoryFilterParams(null, $count, $dateFrom, $dateTo, $email, $status, $txnRef));
     }
 }
